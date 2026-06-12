@@ -33,8 +33,8 @@ private:
 
 class State_Mimic::MotionLoader_ {
 public:
-  MotionLoader_(std::string motion_file, bool need_set_kpkd)
-      : dt(1.0f / 50.0f), need_set_kpkd_(need_set_kpkd) {
+  MotionLoader_(std::string motion_file, float motion_dt, bool need_set_kpkd)
+      : dt(motion_dt), need_set_kpkd_(need_set_kpkd) {
     load_data_from_npz(motion_file);
     num_frames = dof_positions.size();
     duration = num_frames * dt;
@@ -44,8 +44,6 @@ public:
 
   void load_data_from_npz(const std::string &motion_file) {
     cnpy::npz_t npz_data = cnpy::npz_load(motion_file);
-
-    dt = 0.002f;
 
     auto body_pos_w = npz_data["body_pos_w"];   // [frame, body_id, 3]
     auto body_quat_w = npz_data["body_quat_w"]; // [frame, body_id, 4]

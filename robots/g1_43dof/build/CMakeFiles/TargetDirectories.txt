@@ -1,5 +1,0 @@
-/home/lym/Code/deploy/robots/g1_43dof/build/CMakeFiles/cnpy_lib.dir
-/home/lym/Code/deploy/robots/g1_43dof/build/CMakeFiles/g1_controller_lib.dir
-/home/lym/Code/deploy/robots/g1_43dof/build/CMakeFiles/g1_ctrl.dir
-/home/lym/Code/deploy/robots/g1_43dof/build/CMakeFiles/edit_cache.dir
-/home/lym/Code/deploy/robots/g1_43dof/build/CMakeFiles/rebuild_cache.dir
