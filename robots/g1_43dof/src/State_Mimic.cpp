@@ -90,9 +90,8 @@ State_Mimic::State_Mimic(int state_mode, std::string state_string)
     need_set_kpkd_ = cfg["need_set_kpkd"].as<bool>();
   }
 
-  env = std::make_unique<isaaclab::ManagerBasedRLEnv>(
-      YAML::LoadFile(policy_dir / "params" / "deploy.yaml"), articulation);
-  float motion_dt = env->step_dt;
+  auto deploy_cfg = YAML::LoadFile(policy_dir / "params" / "deploy.yaml");
+  float motion_dt = deploy_cfg["step_dt"].as<float>();
 
   // Motion
   motion_ = std::make_shared<MotionLoader_>(motion_file.string(), motion_dt,
@@ -117,6 +116,7 @@ State_Mimic::State_Mimic(int state_mode, std::string state_string)
     end_state = cfg["end_state"].as<std::string>();
   }
 
+  env = std::make_unique<isaaclab::ManagerBasedRLEnv>(deploy_cfg, articulation);
   env->alg = std::make_unique<isaaclab::OrtRunner>(policy_dir / "exported" /
                                                    "policy.onnx");
 
