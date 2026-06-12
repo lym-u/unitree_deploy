@@ -82,7 +82,7 @@ FSM:
 
     motion_file: config/policy/mimic/grab_ball/params/grabBallWithSingleHandRefAction.npz
     policy_dir: config/policy/mimic/grab_ball/
-    need_set_kpkd: true
+    need_set_kpkd: false
     time_start: 0.0
     time_end: 1000.0
 
